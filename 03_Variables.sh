@@ -25,7 +25,7 @@ echo "Total is : $(($var1 + $var2))$var3"
 
 Name="Bhargava A"
 
-echo "My name is : $(${Name}nanda)" #---not working because of $() is used for command substitution, so it will try to execute the command ${Name}nanda which is not valid.
+echo "My name is : $Namenanda" #---not working because of $() is used for command substitution, so it will try to execute the command ${Name}nanda which is not valid.
 
 echo "My name is : ${Name}nanda" #--woerk because of ${Name} is used for variable substitution, so it will replace ${Name} with its value and then append nanda to it.
 
