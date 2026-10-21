@@ -25,6 +25,8 @@ echo "Total is : $(($var1 + $var2))$var3"
 
 Name="Bhargava A"
 
+echo "My name is : $(${Name}nanda)"
+
 echo "My name is : ${Name}nanda"
 
 
