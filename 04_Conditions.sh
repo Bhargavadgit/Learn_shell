@@ -4,7 +4,7 @@
 #---here i am giving manuvally 0 to check the condition, if the user id is 0 then it means the user is root user, otherwise it is not root user.
 
 echo "Please enter user_id:"
-read user_id
+read -s user_id
 
 if [ ${user_id} -lt 1000 ]; then
     echo "You are root user.....
