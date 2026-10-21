@@ -38,4 +38,4 @@ echo "Processing ....."
 dnf install nginx -y
 validate $? "Nginx Installation"
 
-echo "Processing ....."
+echo "installation is success ....."
