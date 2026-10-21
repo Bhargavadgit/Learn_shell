@@ -30,7 +30,7 @@ validate() {
 #----start & end time i need to see in desktop
 #----error logs need t go log file
 
-echo "Script start time : $(date +"%F %T" )" &>> $logs_file
+echo "Script start time : $(date +"%F %T" )" &>> $logs_file | tee -a $logs_file
 echo "Script started execution at $(date +"%F %T")" &>> $logs_file
 echo "Processing ....."
 
