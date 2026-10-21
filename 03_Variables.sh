@@ -29,7 +29,7 @@ echo "My name is : $(Namenanda)"
 
 Name="Bhargava A"
 
-echo "My name is : $(${Name}nanda)"
+echo "My name is : ${Name}nanda"
 
 
 
