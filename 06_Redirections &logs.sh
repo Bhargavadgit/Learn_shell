@@ -30,11 +30,12 @@ validate() {
 #----start & end time i need to see in desktop
 #----error logs need t go log file
 
-echo "Script start time : $(date + "%F %T" )" &>> $logs_file
+echo "Script start time : $(date +"%F %T" )" &>> $logs_file
+echo "Script started execution at $(date +"%F %T")" &>> $logs_file
 echo "Processing ....."
 
 dnf install nginx -y &>> $logs_file 
 validate $? "Nginx "
 
 echo "installation is success ....."
-echo "Script end time : $(date + "%F %T" )" &>> $logs_file
+echo "Script end time : $(date +"%F %T" )" &>> $logs_file
