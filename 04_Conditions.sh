@@ -9,7 +9,7 @@ read user_id
 if [ ${user_id} -lt 1000 ]; then
     echo "You are root user"
 else
-    echo "You are not root user"
+    echo "You are not root user Please Proceed..."
 fi
 
 
