@@ -39,4 +39,3 @@ dnf install nginx -y
 validate $? "Nginx Installation"
 
 echo "installation is success ....."
-    
