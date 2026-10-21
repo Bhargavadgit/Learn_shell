@@ -15,7 +15,7 @@ fi
 #i need to store logs
 mkdir -p $logs_folder
 #--start time
-echo "Start_Time at $(date +%F %T)" >> $logs_file
+echo "Start_Time at $(date +%F %T)" &>> $logs_file
 
 Validate() {
     if [ $1 -ne 0 ]; then
@@ -28,7 +28,7 @@ Validate() {
 
 dnf install nginx -y &>> $logs_file
 validate $? "Nginx"
-echo "End_Time at $(date +%F %T)" >> $logs_file
+echo "End_Time at $(date +%F %T)" &>> $logs_file
 
 
 
