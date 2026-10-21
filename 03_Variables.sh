@@ -25,11 +25,11 @@ echo "Total is : $(($var1 + $var2))$var3"
 
 Name="Bhargava A"
 
-echo "My name is : $(Namenanda)"
+echo "My name is : ${Name}nanda"
 
-Name="Bhargava A"
 
-echo "${Name}nanda"
+
+
 
 
 
