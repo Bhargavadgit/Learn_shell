@@ -34,8 +34,8 @@ echo "Script start time : $(date +"%F %T" )" &>> $logs_file
 echo "Script started execution at $(date +"%F %T")" &>> $logs_file
 echo "Processing ....."
 
-dnf install nginx -y &>> $logs_file 
-validate $? "Nginx "
+dnf install mysql -y &>> $logs_file 
+validate $? "MySQL "
 
 echo "installation is success ....."
 echo "Script end time : $(date +"%F %T" )" &>> $logs_file
