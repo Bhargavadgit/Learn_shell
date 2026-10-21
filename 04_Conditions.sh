@@ -7,10 +7,12 @@ echo "Please enter user_id:"
 read -s user_id
 
 if [ ${user_id} -lt 1000 ]; then
-    echo "You are root user.....
-    Access granted to perform the operations"
+        echo "You are root user.....
+        Access granted to perform the operations"
+            elif [ ${user_id} -lt 9999 ]; then
+            echo "You are not root user Please Proceed with root user/ contact your system administrator"
 else
-    echo "You are not root user Please Proceed with root user/ contact your system administrator"
+         echo "You are Trainy user, Please contact your system administrator for access"
 fi
 
 
