@@ -10,7 +10,7 @@
 
 User_id=$(id -u)
 
-if[ $User_id -ne 0 ]; then
+if [ $User_id -ne 0 ]; then
     echo "You are not root user, Please run the script with root user"
     exit 1
 fi
@@ -25,7 +25,7 @@ fi
 #--Call function    ---- Validate $? "Nginx"
 
 validate() {
-    if[ $1 -ne 0 ]; then
+    if [ $1 -ne 0 ]; then
         echo "$2 installation failed, Please check the issue with the server"
         exit 1
     else
