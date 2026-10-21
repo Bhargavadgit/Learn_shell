@@ -6,7 +6,7 @@
 echo "Please enter user_id:"
 read user_id
 
-if [ $(user_id) -lt 1000 ]; then
+if [ ${user_id} -lt 1000 ]; then
     echo "You are root user"
 else
     echo "You are not root user"
