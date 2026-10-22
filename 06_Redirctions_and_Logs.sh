@@ -10,25 +10,34 @@ if [ $User_id -ne 0 ]; then
     exit 1
 fi
 
+# validate() {
+#     if [ $1 -ne 0 ]; then  ## $1 -ne 0 => 
+#          echo "$2 installation failed, Please check the issue with the server" | tee -a $logfile
+#         exit 1
+#     else
+#         echo "$2 installation is success" | tee -a $logfile
+#     fi
+# }
+
 validate() {
-    if [ $1 -ne 0 ]; then
-        echo "$2 installation failed, Please check the issue with the server" | tee -a $logfile
-        exit 1
-    else
+    if [ $1 -eq 0 ]; then  
         echo "$2 installation is success" | tee -a $logfile
+    else
+       echo "$2 installation failed, Please check the issue with the server" | tee -a $logfile
+        exit 1
     fi
 }
 
-mkdir -p $logs_folder
+# mkdir -p $logs_folder
 
-echo "start time : $(date)" &>> $logfile
+# echo "start time : $(date)" &>> $logfile
 
-echo "Processing ....."
+# echo "Processing ....."
 
 dnf install nginx -y &>> $logfile
 validate $? "Nginx Installation"
 
 
-echo "installation is success ....."
+# echo "installation is success ....."
 
-echo "End time : $(date +"%F %T")" &>> $logfile
+# echo "End time : $(date +"%F %T")" &>> $logfile
