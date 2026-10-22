@@ -5,11 +5,11 @@ User_id=$(id -u)
 logs_folder="/var/log/Learn_shell"
 logs_file="${logs_folder}/${0}.log"
 
-if [ $User_id -lt 999 ]; then
-    echo "You are root user, proceeding your request"
-    else
+if [ $User_id -ne 0 ]; then
     echo "You are not root user, Please run the script with root user"
     exit 1
+    else
+    echo "You are root user, Proceeding script......"
 fi
 
 #i need to store logs
