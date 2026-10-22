@@ -34,10 +34,10 @@ validate() {
 
 # echo "Processing ....."
 
+touchh charan 
+
 dnf install nginxx -y 
 
-
-touch charan
 
 
 # echo "installation is success ....."
