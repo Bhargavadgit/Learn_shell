@@ -14,21 +14,22 @@ fi
 
 #i need to store logs
 mkdir -p $logs_folder
-#--start time
-echo "Start_Time at $(date + "%F %T")" &>> $logs_file
+#--start time After "+"" no space
+echo  "Start_Time at $(date +"%F %T")" &>> $logs_file
 
 Validate() {
     if [ $1 -ne 0 ]; then
         echo "$2 installation failed, Please check the issue with the server" | tee -a $logs_file
         exit 1
     else
-        echo "$2 installation is success"    | tee -a $logs_file
+        echo "$2 installation is success" | tee -a $logs_file
     fi
 }
 
 dnf install nginx -y &>> $logs_file
 validate $? "Nginx"
-echo "End_Time at $(date + "%F %T")" &>> $logs_file
+echo "if you want to check logs refer /var/log/Learn_shell/${0}.log"
+echo "End_Time at $(date +"%F %T")" &>> $logs_file
 
 
 
