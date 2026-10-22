@@ -30,8 +30,11 @@ validate() {
 
 mkdir -p $logs_folder
 
+#--to send logs to log file
 echo "start time : $(date +"%F %T")" &>> $logfile
-echo "start time : $(date +"%F %T")" | tee -a $logfile
+
+#--to see the output on screen
+#echo "start time : $(date +"%F %T")" | tee -a $logfile
 
 echo "Processing ....."
 
