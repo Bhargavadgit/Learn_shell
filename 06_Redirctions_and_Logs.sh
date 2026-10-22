@@ -30,7 +30,7 @@ validate() {
 
 mkdir -p $logs_folder
 
-echo "start time : $(date)" &>> $logfile
+echo "start time : $(date +"%F %T")" &>> $logfile
 
 echo "Processing ....."
 
@@ -38,6 +38,6 @@ dnf install nginx -y &>> $logfile
 validate $? "Nginx Installation"
 
 
-# echo "installation is success ....."
+ echo "installation is success ....."
 
-# echo "End time : $(date +"%F %T")" &>> $logfile
+ echo "End time : $(date +"%F %T")" &>> $logfile
