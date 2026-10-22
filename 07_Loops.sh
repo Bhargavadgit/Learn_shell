@@ -10,6 +10,8 @@ if [ $user_id -eq 0 ]; then
     echo "You are not root user, Please run the script with root user"
     exit 1
 fi
+#--create a dir for logs
+mkdir -p $logs_folder
 
 timestamp(){
    echo "time at :$(date +"%F %T")"
