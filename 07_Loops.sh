@@ -10,10 +10,10 @@ if [ $user_id -eq 0 ]; then
 fi
 
 timestamp(){
-    $(date +"%F %T")
+   echo "time at :$(date +"%F %T")"
 }
 
-Start_time=$(timestamp)
+echo "Start_time=$(timestamp)"
 
 for package in $@; 
 do
@@ -34,4 +34,7 @@ validate() {
        echo "$2 installation failed, Please check the issue with the server"
         exit 1
     fi
+
 }
+    echo "end time=$(timestamp)"
+  echo "installation is success ....."  
