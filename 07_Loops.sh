@@ -19,21 +19,6 @@ timestamp(){
 
 echo "Start_time=$(timestamp)"
 
-for package in $@; 
-do
-    #--check package already installed or not
-    dnf list installed ${package} -y & >> $logfile
-    
-    if [ $? -eq 0 ]; then
-        echo "$package is already installed ...skipping"
-else
-    echo "${package} is not installed, Processing installation"
-    dnf install ${package} -y      & >> $logfile
-    echo "installation is success ....." & >> $logfile
-    validate $? "${package} installation"
-fi
-done
-
 validate() {
     if [ $1 -eq 0 ]; then  
         echo "$2 installation is success"
@@ -43,5 +28,21 @@ validate() {
     fi
 
 }
+
+for package in $@; 
+do
+    #--check package already installed or not
+    dnf list installed ${package} -y & >> $logfile
+    if [ $? -eq 0 ]; then
+        echo "$package is already installed ...skipping"
+else
+    echo "${package} is not installed, Processing installation"
+    dnf install ${package} -y      & >> $logfile
+    validate $? "${package} installation"
+    echo "installation is success ....." & >> $logfile
+fi
+done
+
+
     echo "end time=$(timestamp)"
-  echo "installation is success ....."  
+  #echo "installation is success ....."  
