@@ -34,10 +34,10 @@ validate() {
 
 # echo "Processing ....."
 
-dnf install nginxx -y &>> $logfile
-validate $? "Nginx Installation"
+dnf install nginxx -y 
 
-touch charan &>> $logfile
+
+touch charan
 
 
 # echo "installation is success ....."
