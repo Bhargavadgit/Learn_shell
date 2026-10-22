@@ -1,6 +1,8 @@
 #/bin/bash
 
 user_id=$(id -u) #--get userid
+logs_folder="/var/log/learn_shell"
+logfile="${logs_folder}/${0}.log"
 
 if [ $user_id -eq 0 ]; then
     echo "root user processing....r"
@@ -18,11 +20,12 @@ echo "Start_time=$(timestamp)"
 for package in $@; 
 do
     #--check package already installed or not
-    dnf list installed ${package}
+    dnf list installed ${package} -y | tee -a $logfile
     if [ $? -eq 0 ]; then
         echo "$package is already installed ...skipping"
 else
     echo "${package} is not installed, Processing installation"
+    dnf install ${package} -y      | tee -a $logfile
     validate $? "${package} installation"
 fi
 done
