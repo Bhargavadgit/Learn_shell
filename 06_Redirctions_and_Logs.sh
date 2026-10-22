@@ -31,6 +31,7 @@ validate() {
 mkdir -p $logs_folder
 
 echo "start time : $(date +"%F %T")" &>> $logfile
+echo "start time : $(date +"%F %T")" | tee -a $logfile
 
 echo "Processing ....."
 
