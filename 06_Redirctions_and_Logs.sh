@@ -28,16 +28,14 @@ validate() {
     fi
 }
 
-# mkdir -p $logs_folder
+mkdir -p $logs_folder
 
-# echo "start time : $(date)" &>> $logfile
+echo "start time : $(date)" &>> $logfile
 
-# echo "Processing ....."
+echo "Processing ....."
 
-touchh charan 
-
-dnf install nginxx -y 
-
+dnf install nginx -y &>> $logfile
+validate $? "Nginx Installation"
 
 
 # echo "installation is success ....."
