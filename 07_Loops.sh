@@ -79,21 +79,38 @@ validate() {
 
 }
 
-for package in $@; 
-do
-    #--check package already installed or not
-    dnf list installed $package -y & >> $logfile
-    if [ $? -eq 0 ]; then
-        echo "$package is already installed ...skipping"
-else
-    echo "${package} is not installed, Processing installation"
-    dnf install $package -y      & >> $logfile
-    validate $? "$package installation"
-    echo "installation is success ....." & >> $logfile
-fi
+# for package in $@; 
+# do
+#     #--check package already installed or not
+#     dnf list installed $package -y & >> $logfile
+#     if [ $? -eq 0 ]; then
+#         echo "$package is already installed ...skipping"
+# else
+#     echo "${package} is not installed, Processing installation"
+#     dnf install $package -y      & >> $logfile
+#     validate $? "$package installation"
+#     echo "installation is success ....." & >> $logfile
+# fi
+# done
+
+for package in "$@"; do
+
+    echo "Checking package: $package"
+
+    if dnf list installed "$package" >> "$logfile" 2>&1; then
+        echo "$package is already installed. Skipping."
+    else
+        echo "$package is not installed. Installing..."
+
+        if dnf install "$package" -y >> "$logfile" 2>&1; then
+            echo "$package installation succeeded"
+        else
+            echo "$package installation failed. Check $logfile"
+            exit 1
+        fi
+    fi
+
 done
-
-
     echo "end time=$(timestamp)"
   #echo "installation is success ....."  
 
