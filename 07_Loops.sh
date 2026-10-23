@@ -51,7 +51,7 @@
   #/bin/bash
 
 user_id=$(id -u) #--get userid
-logs_folder="/var/log/learn_shell"
+logs_folder="/var/log/Learn_shell"
 logfile="${logs_folder}/${0}.log"
 
 if [ $user_id -eq 0 ]; then
