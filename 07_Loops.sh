@@ -11,6 +11,12 @@ if [ $user_id -eq 0 ]; then
     echo "You are not root user, Please run the script with root user"
     exit 1
 fi
+
+# if [ $user_id -ne 0 ]; then
+#     echo "Please run this script with sudo access.."
+#     exit 1
+# fi
+
 #--create a dir for logs
 mkdir -p $logs_folder
 
@@ -34,7 +40,7 @@ validate() {
  do
      #--check package already installed or not
     # dnf list installed $package  &>> $logfile  
-    dnf list installed | grep $package &>> $logfile
+    dnf list available | grep $package &>> $logfile
     validate $? "list $package" 
      if [ $? -eq 0 ]; then
          echo "$package is already installed ...skipping"
