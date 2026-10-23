@@ -33,18 +33,18 @@ validate() {
  for package in "$@"; 
  do
      #--check package already installed or not
-    # dnf list installed $package  &>> $logs_file  
-    dnf list installed | grep $package &>> $logs_file
-    # dnf list installed "$package" &>> $logs_file
+    # dnf list installed $package  &>> $logfile  
+    dnf list installed | grep $package &>> $logfile
+    dnf list installed "$package" &>> $logfile
     validate $? "$package" 
      if [ $? -eq 0 ]; then
          echo "$package is already installed ...skipping"
          validate $? "$package"
  else
      echo "${package} is not installed, Processing installation"
-    dnf install $package -y &>> $logs_file
+    dnf install $package -y &>> $logfile
      validate $? "$package"
-     echo "${package}installation is success ....." &>> $logs_file
+     echo "${package}installation is success ....." &>> $logfile
  fi
  done
 
