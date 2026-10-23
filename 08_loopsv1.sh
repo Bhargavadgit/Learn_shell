@@ -44,4 +44,4 @@ done
 
 echo "End_time=$(timestamp)"
 
-echo "total time = $(end_time) - $(start_time)"
+echo "total time = $(end_time)-$(start_time)"
