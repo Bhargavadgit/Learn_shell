@@ -22,7 +22,7 @@ echo "Start_time=$(timestamp)"
 
 validate() {
     if [ $1 -eq 0 ]; then  
-        echo "$2 installation is success"
+        #echo "$2 installation is success"
     else
        echo "$2 installation failed, Please check the issue with the server"
         exit 1
@@ -33,17 +33,18 @@ validate() {
  for package in "$@"; 
  do
      #--check package already installed or not
-    # dnf list installed $package  & >> $logfile  
-    dnf list installed | grep $package & >> $logfile
+    # dnf list installed $package  &>> $logs_file  
+    dnf list installed | grep $package &>> $logs_file
+    dnf list installed "$package" &>> $logs_file
     validate $? "$package" 
      if [ $? -eq 0 ]; then
          echo "$package is already installed ...skipping"
          validate $? "$package"
  else
      echo "${package} is not installed, Processing installation"
-    dnf install $package -y      & >> $logfile
+    dnf install $package -y &>> $logs_file
      validate $? "$package"
-     echo "${package}installation is success ....." & >> $logfile
+     echo "${package}installation is success ....." &>> $logs_file
  fi
  done
 
