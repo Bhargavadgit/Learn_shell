@@ -35,7 +35,7 @@ validate() {
      #--check package already installed or not
     # dnf list installed $package  &>> $logfile  
     dnf list installed | grep $package &>> $logfile
-    validate $? "$package" 
+    validate $? "list $package" 
      if [ $? -eq 0 ]; then
          echo "$package is already installed ...skipping"
          validate $? "$package"
