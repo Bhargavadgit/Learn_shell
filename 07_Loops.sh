@@ -14,7 +14,7 @@ fi
 mkdir -p $logs_folder
 
 timestamp(){
-   echo "time at :$(date +"%F %T")"
+   echo "time at :$(date +"%F_%T")"
 }
 
 echo "Start_time=$(timestamp)"
@@ -32,13 +32,13 @@ validate() {
 for package in $@; 
 do
     #--check package already installed or not
-    dnf list installed ${package} -y & >> $logfile
+    dnf list installed $package -y & >> $logfile
     if [ $? -eq 0 ]; then
         echo "$package is already installed ...skipping"
 else
     echo "${package} is not installed, Processing installation"
-    dnf install ${package} -y      & >> $logfile
-    validate $? "${package} installation"
+    dnf install $package -y      & >> $logfile
+    validate $? "$package installation"
     echo "installation is success ....." & >> $logfile
 fi
 done
@@ -46,3 +46,5 @@ done
 
     echo "end time=$(timestamp)"
   #echo "installation is success ....."  
+
+  
