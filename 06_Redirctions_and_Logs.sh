@@ -2,7 +2,7 @@
 
 User_id=$(id -u)
 #--log folder path & File path
-logs_folder="/var/log/learn_shell"
+logs_folder="/var/log/Learn_shell"
 logfile="${logs_folder}/${0}.log"
 
 if [ $User_id -ne 0 ]; then
