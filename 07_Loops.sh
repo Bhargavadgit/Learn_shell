@@ -3,7 +3,7 @@
 # 
 user_id=$(id -u) #--get userid
 logs_folder="/var/log/Learn_shell"
-logfile="${logs_folder}/${0}.log"
+logs_file="${logs_folder}/${0}.log"
 
 if [ $user_id -eq 0 ]; then
     echo "root user processing...."
@@ -51,17 +51,17 @@ done
 #  for package in "$@"; 
 #  do
 #      #--check package already installed or not
-#     # dnf list installed $package  &>> $logfile  
-#     dnf list available | grep $package &>> $logfile
+#     # dnf list installed $package  &>> $logs_file  
+#     dnf list available | grep $package &>> $logs_file
 #     validate $? "list $package" 
 #      if [ $? -eq 0 ]; then
 #          echo "$package is already installed ...skipping"
 #          validate $? "$package"
 #  else
 #      echo "${package} is not installed, Processing installation"
-#     dnf install $package -y &>> $logfile
+#     dnf install $package -y &>> $logs_file
 #      validate $? "$package"
-#      echo "${package}installation is success ....." &>> $logfile
+#      echo "${package}installation is success ....." &>> $logs_file
 #  fi
 #  done
 
@@ -69,15 +69,15 @@ done
 
     #echo "Checking package: $package"
 
-    #if dnf list installed "$package" >> "$logfile" 2>&1; then
+    #if dnf list installed "$package" >> "$logs_file" 2>&1; then
       #  echo "$package is already installed. Skipping."
    # else
      #   echo "$package is not installed. Installing..."
 
-      #  if dnf install "$package" -y >> "$logfile" 2>&1; then
+      #  if dnf install "$package" -y >> "$logs_file" 2>&1; then
       #      echo "$package installation succeeded"
       #  else
-      #      echo "$package installation failed. Check $logfile"
+      #      echo "$package installation failed. Check $logs_file"
        #     exit 1
       #  fi
    # fi
