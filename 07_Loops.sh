@@ -55,7 +55,7 @@ logs_folder="/var/log/learn_shell"
 logfile="${logs_folder}/${0}.log"
 
 if [ $user_id -eq 0 ]; then
-    echo "root user processing....r"
+    echo "root user processing...."
     else
     echo "You are not root user, Please run the script with root user"
     exit 1
@@ -79,38 +79,38 @@ validate() {
 
 }
 
-# for package in $@; 
-# do
-#     #--check package already installed or not
-#     dnf list installed $package -y & >> $logfile
-#     if [ $? -eq 0 ]; then
-#         echo "$package is already installed ...skipping"
-# else
-#     echo "${package} is not installed, Processing installation"
-#     dnf install $package -y      & >> $logfile
-#     validate $? "$package installation"
-#     echo "installation is success ....." & >> $logfile
-# fi
-# done
+ for package in "$@"; 
+ do
+     #--check package already installed or not
+    dnf list installed $package  & >> $logfile
+     if [ $? -eq 0 ]; then
+         echo "$package is already installed ...skipping"
+ else
+     echo "${package} is not installed, Processing installation"
+    dnf install $package -y      & >> $logfile
+     validate $? "$package"
+     echo "${package}installation is success ....." & >> $logfile
+ fi
+ done
 
-for package in "$@"; do
+#for package in "$@"; do
 
-    echo "Checking package: $package"
+    #echo "Checking package: $package"
 
-    if dnf list installed "$package" >> "$logfile" 2>&1; then
-        echo "$package is already installed. Skipping."
-    else
-        echo "$package is not installed. Installing..."
+    #if dnf list installed "$package" >> "$logfile" 2>&1; then
+      #  echo "$package is already installed. Skipping."
+   # else
+     #   echo "$package is not installed. Installing..."
 
-        if dnf install "$package" -y >> "$logfile" 2>&1; then
-            echo "$package installation succeeded"
-        else
-            echo "$package installation failed. Check $logfile"
-            exit 1
-        fi
-    fi
+      #  if dnf install "$package" -y >> "$logfile" 2>&1; then
+      #      echo "$package installation succeeded"
+      #  else
+      #      echo "$package installation failed. Check $logfile"
+       #     exit 1
+      #  fi
+   # fi
 
-done
+#done
     echo "end time=$(timestamp)"
   #echo "installation is success ....."  
 
