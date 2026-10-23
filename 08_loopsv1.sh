@@ -26,7 +26,7 @@ validate() {
 
 }
 
-echo "Start_time=$(timestamp)"
+echo "Start_time=$(timestamp)" | tee -a $logs_file
 
 for Package in "$@";
 do
@@ -42,6 +42,5 @@ do
 
 done    
 
-echo "End_time=$(timestamp)"
+echo "End_time=$(timestamp)" | tee -a $logs_file
 
-echo "total time = $(end_time)-$(start_time)"
