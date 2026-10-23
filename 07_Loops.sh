@@ -85,6 +85,7 @@ validate() {
     dnf list installed $package  & >> $logfile
      if [ $? -eq 0 ]; then
          echo "$package is already installed ...skipping"
+         validate $? "$package"
  else
      echo "${package} is not installed, Processing installation"
     dnf install $package -y      & >> $logfile
