@@ -50,5 +50,5 @@ done
 
 echo "End_time=$(timestamp)" | tee -a $logs_file
 
-echo "total time to run : $seconds"
+#echo "total time to run : ${seconds}"
 
