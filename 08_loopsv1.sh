@@ -3,6 +3,12 @@
 user_id=$(id -u) #--get userid
 logs_folder="/var/log/Learn_shell"
 logs_file="${logs_folder}/${0}.log"
+#-- add clours to messages
+R='\e[31m' # Red
+G='\e[32m' # Green
+Y='\e[33m' # Yellow
+N='\e[0m'  # No Color
+
 
 if [ $user_id -eq 0 ]; then
     echo "root user processing...."
@@ -20,7 +26,7 @@ timestamp(){
 
 validate() {
     if [ $1 -ne 0 ]; then   
-       echo "$2 installation failed, see logs"
+       echo -e "${R}$2 installation failed, see logs${N}"
         exit 1
     fi
 
@@ -33,10 +39,10 @@ do
         dnf list installed | grep $Package &>> $logs_file
 
         if [ $? -eq 0 ]; then
-            echo "$Package is already installed ...skipping"
+            echo -e "${G}$Package is already installed ...${Y}skipping${N}"
         else
             dnf install $Package -y &>> $logs_file
-            validate $? "Installing ${Package}" 
+            validate $? "${G}Installing ${Package}${N}" 
         fi
 
 
