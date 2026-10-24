@@ -15,7 +15,7 @@ fi
 mkdir -p $logs_folder
 
 timestamp(){
-   echo "time at :$(date +"%F_%T")"
+   echo "time at :$(date "+%F_%T")"
 }
 
 validate() {
@@ -43,4 +43,6 @@ do
 done    
 
 echo "End_time=$(timestamp)" | tee -a $logs_file
+
+echo "total time to run : $seconds"
 
